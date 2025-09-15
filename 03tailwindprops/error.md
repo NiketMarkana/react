@@ -18,7 +18,9 @@ Copy code
 
 ```bash
 npm install -D @tailwindcss/postcss
-Step 2: Update postcss.config.js
+```
+## Step 2: Update postcss.config.js
+```bash
 Old way (❌ wrong in Tailwind v4)
 js
 Copy code
@@ -36,7 +38,10 @@ export default {
     "@tailwindcss/postcss": {},
   },
 }
-Step 3: Update your CSS entry file (index.css)
+```
+## Step 3: Update your CSS entry file (index.css)
+
+```bash
 Old (❌ Tailwind v3 style)
 css
 Copy code
@@ -47,7 +52,8 @@ New (✅ Tailwind v4 style)
 css
 Copy code
 @import "tailwindcss";
-✅ Final Notes
+```
+# ✅ Final Notes
 After these changes, Vite should build without errors.
 
 Tailwind v4 will work properly with your React project.
@@ -57,11 +63,6 @@ Tailwind v3 → used tailwindcss directly as PostCSS plugin
 
 Tailwind v4 → requires @tailwindcss/postcss
 
-yaml
-Copy code
+
 
 ---
-
-👉 Ab tumhe bas is content ko copy karke `error.md` me paste karna hai.  
-
-Kya chahte ho main tumhare liye ye file seedha **generate karke download link** bhi bana du?
