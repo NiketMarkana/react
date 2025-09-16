@@ -16,10 +16,18 @@ function App() {
     /*if(counter<0) counter = 0
     setCounter(counter)*/
 
+
+    //add 4
     setCounter(prevCounter => prevCounter + 1)
     setCounter(prevCounter => prevCounter + 1 )
     setCounter(prevCounter => prevCounter + 1)
     setCounter(prevCounter => prevCounter + 1)
+    //------------------OR-------------------------
+    //add 4
+    // setCounter(Counter => Counter + 1)
+    // setCounter(niket => niket + 1)
+    // setCounter(xyz => xyz + 1)
+    // setCounter(abc => abc + 1)
     
   }
 
