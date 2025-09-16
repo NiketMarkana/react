@@ -189,5 +189,4 @@ function Child({ onClick }) {
 }
 
 export default React.memo(Child);
----
 ``` 
