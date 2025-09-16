@@ -19,7 +19,7 @@ Copy code
 ```bash
 npm install -D @tailwindcss/postcss
 ```
-## Step 2: Create tailwind.config.js files manually (agar npx tailwindcss init -p error de raha hai)
+## Step 2: Create tailwind.config.js file manually (agar npx tailwindcss init -p error de raha hai)
 ```bash
 /** @type {import('tailwindcss').Config} */
 export default {
