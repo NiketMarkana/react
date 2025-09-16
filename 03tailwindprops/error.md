@@ -19,38 +19,59 @@ Copy code
 ```bash
 npm install -D @tailwindcss/postcss
 ```
-## Step 2: Update postcss.config.js
+## Step 2: Create config files manually (agar npx tailwindcss init -p error de raha hai)
 ```bash
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+```
+## Step 3: Update postcss.config.js
 Old way (❌ wrong in Tailwind v4)
 js
 Copy code
+```bash
 export default {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
   },
 }
+```
 New way (✅ correct for Tailwind v4)
 js
 Copy code
+```bash
+
 export default {
   plugins: {
     "@tailwindcss/postcss": {},
   },
 }
 ```
-## Step 3: Update your CSS entry file (index.css)
-
-```bash
+## Step 4: Update your CSS entry file (index.css)
 Old (❌ Tailwind v3 style)
 css
 Copy code
+```bash
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+```
 New (✅ Tailwind v4 style)
 css
 Copy code
+```bash
+
 @import "tailwindcss";
 ```
 # ✅ Final Notes
