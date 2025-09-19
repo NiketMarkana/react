@@ -4,7 +4,7 @@
 Open PowerShell and navigate to your project folder:
 
 ```powershell
-cd "C:\Users\niket\OneDrive\Desktop\goal of 2027\tailwindcss"
+cd "C:\Users\niket\OneDrive\Desktop\goal of 2027\react"
 ```
 Initialize npm (if not already done):
 
