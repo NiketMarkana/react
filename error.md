@@ -1,3 +1,47 @@
+# change version-4 to version-3
+## 1. Initialize Project
+
+Open PowerShell and navigate to your project folder:
+
+```powershell
+cd "C:\Users\niket\OneDrive\Desktop\goal of 2027\tailwindcss"
+```
+Initialize npm (if not already done):
+
+```powershell
+npm init -y
+```
+## 2. Install Tailwind Locally
+```powershell
+npm install -D tailwindcss postcss autoprefixer
+```
+This creates node_modules and installs Tailwind CSS locally.
+
+## 3.install vite
+```powershell
+npm install vite
+```
+## 4.update package.json
+```json
+  "scripts":{
+    "start":"vite"
+    }
+    "devDepe......
+  }
+```
+## ERROR
+```powershell
+npx tailwindcss init
+```
+## 5.SOLUTION :- convert version 4 to version 3
+```powershell
+npm i -D tailwindcss@3 postcss autoprefixer
+```
+## 6.now you can init
+```powershell
+npx tailwindcss init
+```
+
 # Tailwind v4 + PostCSS Fix Guide
 
 ## Problem  
