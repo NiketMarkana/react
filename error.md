@@ -78,7 +78,7 @@ export default {
 }
 
 ```
-## Step 3: Update postcss.config.js
+## Step 3: Update postcss.config.js if not availabke then manually create it
 Old way (❌ wrong in Tailwind v4)
 js
 Copy code
