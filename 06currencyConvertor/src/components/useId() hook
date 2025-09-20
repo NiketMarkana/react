@@ -1,0 +1,57 @@
+    🔹 What is useId?
+
+    useId is a built-in React hook (introduced in React 18).
+
+    It generates a unique, stable ID string that you can use for accessibility and form elements.
+
+    Useful when you need to link elements (like <label> with <input>) and avoid duplicate IDs when components render multiple times.
+
+    🔹 Example 1 – Simple usage
+    import { useId } from "react";
+
+    function MyInput() {
+    const id = useId(); // generates a unique ID
+
+    return (
+        <div>
+        <label htmlFor={id}>Enter your name:</label>
+        <input id={id} type="text" />
+        </div>
+    );
+    }
+
+
+    ✅ Here, useId() ensures that:
+
+    <label htmlFor={id}> is properly linked to <input id={id}>.
+
+    Even if you render MyInput multiple times, each input gets a unique ID (like :r0:-1, :r1:-1).
+
+    🔹 Example 2 – Multiple inputs
+    function LoginForm() {
+    const emailId = useId();
+    const passwordId = useId();
+
+    return (
+        <form>
+        <label htmlFor={emailId}>Email</label>
+        <input id={emailId} type="email" />
+
+        <label htmlFor={passwordId}>Password</label>
+        <input id={passwordId} type="password" />
+        </form>
+    );
+    }
+
+    🔹 Why not just use random strings?
+
+    React guarantees that useId values are consistent across server and client rendering (important for SSR/Next.js).
+
+    Prevents hydration mismatches (where IDs differ between server and client).
+
+    🔹 When to use useId?
+
+    ✅ Use when:
+
+    You need unique IDs for form elements, accessibility (ARIA attributes), or linking labels with inputs.
+    ❌ Don’t use for keys in lists → use array indexes or unique data instead.
