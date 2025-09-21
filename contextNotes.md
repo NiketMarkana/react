@@ -136,7 +136,10 @@ export default {
   plugins: [],
 }
 
-
-
-
 ```
+
+## if it does not work then add this in index.css
+```css
+@custom-variant dark (&:where(.dark, .dark *));
+```
+here no need of tailwind.config.js if you add this
