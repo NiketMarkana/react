@@ -1,0 +1,158 @@
+What is State in React?
+
+State is a special built-in object in React components.
+It is used to store dynamic data that changes over time (like input values, counters, API data).
+When state changes, React re-renders the component automatically to reflect the new data in the UI.
+
+Example 1 – Counter with useState
+import React, { useState } from "react";
+
+function Counter() {
+  // Declare a state variable "count" with default value 0
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+🔎 Why do we need State?
+
+Without state, values wouldn’t update dynamically in the UI.
+State makes React components interactive and responsive.
+👉 Think of props as inputs to a component (fixed unless parent changes them)
+👉 Think of state as the component’s own memory, which can change internally.
+
+---------------------------------------------------------------------------------------------------------------
+🏪 Store
+
+The store is the central place where all your application’s state lives.
+It holds the current state tree and allows updates only through dispatching actions.
+You usually create it with configureStore (from Redux Toolkit) or createStore (older Redux).
+
+Example:
+import { configureStore } from '@reduxjs/toolkit'
+import counterReducer from './counterSlice'
+
+const store = configureStore({
+  reducer: {
+    counter: counterReducer
+  }
+})
+
+export default store
+
+---------------------------------------------------------------------------------------------------------------
+🔄 Reducers
+
+A reducer is just a function that takes the current state and an action, and returns a new state.
+Reducers are pure functions → no side effects, no direct mutations.
+Each slice of state usually has its own reducer.
+
+Example:
+With Redux Toolkit, reducers are usually defined in slices:
+import { createSlice } from '@reduxjs/toolkit'
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: { value: 0 },
+  reducers: {
+    increment: (state) => { state.value += 1 },
+    decrement: (state) => { state.value -= 1 }
+  }
+})
+
+export const { increment, decrement } = counterSlice.actions
+export default counterSlice.reducer
+
+---------------------------------------------------------------------------------------------------------------
+🚀 useDispatch
+
+A React hook from react-redux.
+Lets you send actions to the store.
+Think of it as the "remote control" for updating the store.
+
+Example:
+import { useDispatch } from 'react-redux'
+import { increment } from './counterSlice'
+
+function CounterButton() {
+  const dispatch = useDispatch()
+
+  return (
+    <button onClick={() => dispatch(increment())}>
+      Increment
+    </button>
+  )
+}
+
+---------------------------------------------------------------------------------------------------------------
+👀 useSelector
+
+Another React hook from react-redux.
+Lets you read (subscribe to) values from the store.
+Whenever the selected state changes, your component re-renders.
+
+Example:
+import { useSelector } from 'react-redux'
+
+function CounterDisplay() {
+  const count = useSelector((state) => state.counter.value)
+
+  return <p>Count: {count}</p>
+}
+
+---------------------------------------------------------------------------------------------------------------
+🔗 Putting It All Together
+// App.jsx
+import React from 'react'
+import { Provider } from 'react-redux'
+import store from './store'
+import CounterButton from './CounterButton'
+import CounterDisplay from './CounterDisplay'
+
+function App() {
+  return (
+    <Provider store={store}>
+      <CounterDisplay />
+      <CounterButton />
+    </Provider>
+  )
+}
+
+export default App
+
+
+Provider makes the store available.
+useSelector reads state.
+useDispatch sends actions to reducers.
+Reducers update the store state
+
+---------------------------------------------------------------------------------------------------------------
+🔹 slice in JavaScript
+
+slice() is a built-in JavaScript method used on arrays and strings.
+It extracts a portion of the array/string and returns a new copy — without changing the original.
+
+🔹 1. slice() with Arrays
+
+let numbers = [10, 20, 30, 40, 50];
+
+// slice(start, end) → extracts from index "start" up to (but not including) "end"
+let part1 = numbers.slice(1, 3); 
+console.log(part1); // [20, 30]
+
+let part2 = numbers.slice(2); 
+console.log(part2); // [30, 40, 50]
+
+let part3 = numbers.slice(-2); 
+console.log(part3); // [40, 50]  (negative means count from the end)
+
+✅ Original array stays unchanged:
+numbers → [10, 20, 30, 40, 50]
